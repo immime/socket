@@ -10,9 +10,15 @@
 	<name>client</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sidland.version>0.0.1-SNAPSHOT</sidland.version>
+		<junit.version>3.8.1</junit.version>
+	</properties>
+	
 	<dependencies>
 		<dependency>
-			<groupId>utils.soket.netty</groupId>
+			<groupId>utils.soket</groupId>
 			<artifactId>msg</artifactId>
 			<version>${sidland.version}</version>
 		</dependency>
