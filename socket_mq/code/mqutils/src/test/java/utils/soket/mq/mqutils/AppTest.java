@@ -1,4 +1,4 @@
-package utils.soket.mq.beanutils;
+package utils.soket.mq.mqutils;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
