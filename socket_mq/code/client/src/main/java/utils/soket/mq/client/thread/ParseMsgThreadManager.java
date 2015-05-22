@@ -59,7 +59,6 @@ public class ParseMsgThreadManager extends AbsThread {
 	}
 
 	class ParseThreadManage implements Runnable {
-
 		public void run() {
 			while (isStart) {
 				try {
@@ -70,9 +69,7 @@ public class ParseMsgThreadManager extends AbsThread {
 					e.printStackTrace();
 				}
 			}
-
 		}
-
 	}
 
 	@Override

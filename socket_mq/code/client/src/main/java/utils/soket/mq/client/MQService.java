@@ -111,7 +111,7 @@ public class MQService {
 				}
 			}
 		};
-		t.start();
+		t.start();//启动，等待系统调用
 	}
 	
 	/**
