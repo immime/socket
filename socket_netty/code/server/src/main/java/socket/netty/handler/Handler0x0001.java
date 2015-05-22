@@ -10,7 +10,7 @@ import socket.netty.msg.AbsMsg;
 import socket.netty.msg.MSG_0x0001;
 import socket.netty.msg.MSG_0x3003;
 import socket.netty.server.TCPServer;
-import utils.soket.msg.ClientManager;
+import soket.netty.msg.utils.ClientManager;
 import utils.utils.DataTypeUtil;
 
 /**

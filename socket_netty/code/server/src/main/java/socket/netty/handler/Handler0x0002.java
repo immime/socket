@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import socket.netty.bean.Client;
 import socket.netty.msg.AbsMsg;
 import socket.netty.msg.MSG_0x0002;
-import utils.soket.msg.ClientManager;
+import soket.netty.msg.utils.ClientManager;
 
 /**
  * 

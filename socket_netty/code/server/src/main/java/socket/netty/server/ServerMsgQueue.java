@@ -1,6 +1,8 @@
-package socket.netty.msg;
+package socket.netty.server;
 
 import java.util.concurrent.LinkedBlockingQueue;
+
+import socket.netty.msg.ReciPackBean;
 
 /**
  * 

@@ -17,8 +17,8 @@ import socket.netty.msg.AbsMsg;
 import socket.netty.server.thread.CheckClientThread;
 import socket.netty.server.thread.CheckTemClientThread;
 import socket.netty.server.thread.ParseMsgThreadManager;
-import utils.soket.msg.Converter;
-import utils.soket.msg.TCPCodec;
+import soket.netty.msg.utils.Converter;
+import soket.netty.msg.utils.TCPCodec;
 import utils.utils.LogUtil;
 import utils.utils.PropertiesUtil;
 

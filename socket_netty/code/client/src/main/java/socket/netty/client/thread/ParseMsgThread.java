@@ -12,7 +12,7 @@ import socket.netty.msg.AbsMsg;
 import socket.netty.msg.MsgFactory;
 import socket.netty.msg.MsgHeader;
 import socket.netty.msg.ReciPackBean;
-import utils.soket.msg.Constants;
+import soket.netty.msg.utils.Constants;
 
 /**
  * 处理消息线程

@@ -22,8 +22,8 @@ import socket.netty.client.thread.ReSendMsgThread;
 import socket.netty.msg.AbsMsg;
 import socket.netty.msg.MSG_0x0001;
 import socket.netty.msg.MSG_0x1001;
-import utils.soket.msg.Converter;
-import utils.soket.msg.TCPCodec;
+import soket.netty.msg.utils.Converter;
+import soket.netty.msg.utils.TCPCodec;
 import utils.utils.PropertiesUtil;
 
 public class TcpClient extends Thread {

@@ -21,8 +21,7 @@ import java.util.Timer;
 import org.slf4j.Logger;
 
 import socket.netty.msg.ReciPackBean;
-import socket.netty.msg.ServerMsgQueue;
-import utils.soket.msg.ClientManager;
+import soket.netty.msg.utils.ClientManager;
 import utils.utils.LogUtil;
 
 /**

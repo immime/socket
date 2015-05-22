@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import socket.netty.bean.AbsThread;
 import socket.netty.msg.ReciPackBean;
-import socket.netty.msg.ServerMsgQueue;
+import socket.netty.server.ServerMsgQueue;
 import utils.utils.PropertiesUtil;
 
 /**

@@ -12,6 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.shade.plugin.version>1.2.1</maven.shade.plugin.version>
 		<sidland.version>0.0.1-SNAPSHOT</sidland.version>
 		<junit.version>3.8.1</junit.version>
 	</properties>
