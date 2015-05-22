@@ -1,4 +1,4 @@
-package utils.soket.msg;
+package soket.netty.msg.utils;
 
 public class EvilTransform {
 	// static final double pi=Math.PI;

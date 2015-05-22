@@ -2,15 +2,20 @@ package socket.netty.msg;
 
 import java.io.Serializable;
 
-import utils.soket.msg.Constants;
-import utils.soket.msg.Converter;
+import soket.mq.msg.utils.ToMQField;
+import soket.netty.msg.utils.Constants;
+import soket.netty.msg.utils.Converter;
 import utils.utils.LogUtil;
 
+@SuppressWarnings("serial")
 public class MsgHeader implements Serializable {
-	private static final long serialVersionUID = 1L;
+	@ToMQField
 	private short msgid; //消息ID
+	@ToMQField
 	private long seq; //从 0 开始累加
+	@ToMQField
 	private String mac; //接入平台标识
+	@ToMQField
 	private int length; //消息总长度
 
 

@@ -8,7 +8,7 @@
  *
 */
 
-package utils.soket.msg;
+package soket.netty.msg.utils;
 
 import utils.utils.PropertiesUtil;
 

@@ -1,4 +1,4 @@
-package utils.soket.msg;
+package soket.netty.msg.utils;
 
 import io.netty.channel.ChannelHandlerContext;
 

@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 import org.slf4j.Logger;
 
-import utils.soket.msg.Converter;
+import soket.mq.msg.utils.ToMQField;
+import soket.netty.msg.utils.Converter;
 import utils.utils.LogUtil;
 
 
@@ -22,12 +23,18 @@ public class MSG_0x2001 extends AbsMsg {
 	Logger logger = LogUtil.getInstance().getLogger(MSG_0x2001.class);
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@ToMQField
 	private String cphm;
+	@ToMQField
 	private String sjhm;
+	@ToMQField
 	private String jdkh;
+	@ToMQField
 	private String jdsj;
+	@ToMQField
 	private long cljd;
+	@ToMQField
 	private long clwd;
 
 	@Override

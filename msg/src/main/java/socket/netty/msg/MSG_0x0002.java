@@ -13,11 +13,8 @@ import socket.netty.msg.MessageID;
  *
  * @author sid
  */
+@SuppressWarnings("serial")
 public class MSG_0x0002 extends AbsMsg {
-
-	private static final long serialVersionUID = 1L;
-
-	
 	
 	@Override
 	public String toString() {

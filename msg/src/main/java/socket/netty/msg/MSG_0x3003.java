@@ -2,7 +2,8 @@ package socket.netty.msg;
 
 import org.slf4j.Logger;
 
-import utils.soket.msg.Converter;
+import soket.mq.msg.utils.ToMQField;
+import soket.netty.msg.utils.Converter;
 import utils.utils.LogUtil;
 
 
@@ -20,9 +21,12 @@ public class MSG_0x3003 extends AbsMsg {
 	Logger logger = LogUtil.getInstance().getLogger(MSG_0x3003.class);
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@ToMQField
 	private int msgid;
+	@ToMQField
 	private byte state;
+	@ToMQField
 	private String errormsg="";
 
 	@Override

@@ -5,8 +5,8 @@ import java.nio.ByteBuffer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import utils.soket.msg.Constants;
-import utils.soket.msg.Converter;
+import soket.netty.msg.utils.Constants;
+import soket.netty.msg.utils.Converter;
 
 /**
  * 

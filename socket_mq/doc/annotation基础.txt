@@ -1,0 +1,70 @@
+原文内容比较多，这里就简单地说一下。java 5以后增加了3个annotation，
+@Override
+@Deprecated
+@SuppressWarnings
+      以上annotation用途就不说了。java中自定义annotation需要@interface关键字和用到几个内置annotation。原文提到“sun有点吝啬，偏偏搞得与interface这么像”，其实也可以理解为，正好说明接口和注解还有一些类似的。用到的元注解有@Target,@Retention,@Documented,@Inherited ，用途如下：
+    @Target 表示该注解用于什么地方，可能的 ElemenetType 参数包括： 
+        ElemenetType.CONSTRUCTOR 构造器声明 
+        ElemenetType.FIELD 域声明（包括 enum 实例） 
+        ElemenetType.LOCAL_VARIABLE 局部变量声明 
+        ElemenetType.METHOD 方法声明 
+        ElemenetType.PACKAGE 包声明 
+        ElemenetType.PARAMETER 参数声明 
+        ElemenetType.TYPE 类，接口（包括注解类型）或enum声明 
+         
+    @Retention 表示在什么级别保存该注解信息。可选的 RetentionPolicy 参数包括： 
+        RetentionPolicy.SOURCE 注解将被编译器丢弃 
+        RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃 
+        RetentionPolicy.RUNTIME VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息。 
+         
+    @Documented 将此注解包含在 javadoc 中 
+     
+    @Inherited 允许子类继承父类中的注解
+
+      先来了解下各自的意义
+   1、源文件Target.java 
+
+   @Documented  
+   @Retention(RetentionPolicy.RUNTIME)  
+   @Target(ElementType.ANNOTATION_TYPE)  
+   public @interface Target {  
+      ElementType[] value();  
+   }  
+   其中的@interface是一个关键字，在设计annotations的时候必须把一个类型定义为@interface. 
+   
+   2、源文件Retention.java 
+
+   @Documented  
+   @Retention(RetentionPolicy.RUNTIME)  
+   @Target(ElementType.ANNOTATION_TYPE)  
+   public @interface Retention {  
+      RetentionPolicy value();  
+   }  
+   在上面的文件都用到了RetentionPolicy，ElementType这两个字段,这两个文件的源代码如下： 
+   
+   3、源文件RetentionPolicy.java 
+
+   public enum RetentionPolicy {  
+    SOURCE,  
+    CLASS,  
+    RUNTIME  
+   }  
+
+   这是一个enum类型,共有三个值，分别是SOURCE,CLASS 和 RUNTIME. 
+   SOURCE代表的是这个Annotation类型的信息只会保留在程序源码里，源码如果经过了编译之后，Annotation的数据就会消失,并不会保留在编译好的.class文件里面。 
+   ClASS的意思是这个Annotation类型的信息保留在程序源码里,同时也会保留在编译好的.class文件里面,在执行的时候，并不会把这一些信息加载到虚拟机(JVM)中去.注意一下，当你没有设定一个Annotation类型的Retention值时，系统默认值是CLASS. 
+   第三个,是RUNTIME,表示在源码、编译好的.class文件中保留信息，在执行的时候会把这一些信息加载到JVM中去的． 
+　 举一个例子，如@Override里面的Retention设为SOURCE,编译成功了就不要这一些检查的信息;相反,@Deprecated里面的 Retention设为RUNTIME,表示除了在编译时会警告我们使用了哪个被Deprecated的方法,在执行的时候也可以查出该方法是否被 Deprecated. 
+
+   4、源文件ElementType.java 
+
+   public enum ElementType {  
+    TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR,  
+    LOCAL_VARIABLE, ANNOTATION_TYPE,PACKAGE  
+   }  
+
+   ＠Target里面的ElementType是用来指定Annotation类型可以用在哪一些元素上的.说明一下：TYPE(类型), FIELD(属性), METHOD(方法), PARAMETER(参数), CONSTRUCTOR(构造函数),LOCAL_VARIABLE(局部变量), ANNOTATION_TYPE,PACKAGE(包),其中的TYPE(类型)是指可以用在Class,Interface,Enum和 Annotation类型上. 
+   另外,从1的源代码可以看出,@Target自己也用了自己来声明自己,只能用在ANNOTATION_TYPE之上. 
+   如果一个Annotation类型没有指明@Target使用在哪些元素上,那么它可以使用在任何元素之上,这里的元素指的是上面的八种类型. 
+   面一下1和2的源文件，它们都使用了@Documented,@Documented的目的就是让这一个Annotation类型的信息能够显示在javaAPI说明文档上;没有添加的话，使用javadoc生成API文档的时候就会找不到这一个类型生成的信息. 
+   另外一点，如果需要把Annotation的数据继承给子类，那么就会用到@Inherited这一个。

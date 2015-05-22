@@ -6,20 +6,19 @@ import java.nio.ByteBuffer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import utils.soket.msg.Constants;
+import soket.mq.msg.utils.ToMQObject;
+import soket.netty.msg.utils.Constants;
 
 
+@SuppressWarnings("serial")
 public abstract class AbsMsg implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(AbsMsg.class);
+	private static final Logger logger = LoggerFactory.getLogger(AbsMsg.class);
 
+	@ToMQObject
 	protected MsgHeader head;
-
-	public volatile static int seq = 0;
 	// 消息长度
-	ByteBuffer buffer = ByteBuffer.allocate(10*1024*1024);
+	private ByteBuffer buffer = ByteBuffer.allocate(10*1024*1024);
 
 	public AbsMsg() {
 		this.head = new MsgHeader();
@@ -28,9 +27,11 @@ public abstract class AbsMsg implements Serializable {
 //				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 //		String persist = new String(fs);
 		this.head.setMac(Constants.SERVER_MAC);
-		if(seq==Integer.MAX_VALUE)
-			seq=0;
-		this.head.setSeq(seq++);
+		if(this.head.getSeq()==Integer.MAX_VALUE)
+			this.head.setSeq(0);;
+		this.head.setSeq(this.head.getSeq()+1);
+		this.head.setMsgid((short)this.getMsgID());
+		this.head.setLength(Constants.HEAD_LENGTH+this.getBodylen());
 
 	}
 
@@ -122,6 +123,14 @@ public abstract class AbsMsg implements Serializable {
 
 	public void setHead(MsgHeader head) {
 		this.head = head;
+	}
+
+	public ByteBuffer getBuffer() {
+		return buffer;
+	}
+
+	public void setBuffer(ByteBuffer buffer) {
+		this.buffer = buffer;
 	}
 
 }
