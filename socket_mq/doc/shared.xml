@@ -1,0 +1,7 @@
+<broker xmlns="http://activemq.apache.org/schema/core"
+dataDirectory="/some/location"
+brokerName="mmuserb2" useJmx="true" advisorySupport="false"
+persistent="true" deleteAllMessagesOnStartup="false"
+useShutdownHook="false" schedulerSupport="true">
+......
+</broker>

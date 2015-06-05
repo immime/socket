@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<beans xmlns="http://activemq.org/config/1.0">
+ 
+  <broker name="sender" persistent="false" useJmx="false">  
+    <networkConnectors>
+      <networkConnector uri="multicast://default"/>
+    </networkConnectors>
+ 
+    <persistenceAdapter>
+      <memoryPersistenceAdapter/>
+    </persistenceAdapter>
+ 
+  <transportConnectors>
+      <transportConnector uri="tcp://localhost:0" discoveryUri="multicast://default"/>
+    </transportConnectors>
+  </broker>
+ 
+</beans>

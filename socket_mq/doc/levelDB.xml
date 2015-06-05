@@ -1,0 +1,15 @@
+<broker brokerName="broker" ... >
+  ...
+  <persistenceAdapter>
+    <replicatedLevelDB
+      directory="activemq-data"
+      replicas="3"
+      bind="tcp://0.0.0.0:0"
+      zkAddress="zoo1.example.org:2181,zoo2.example.org:2181,zoo3.example.org:2181"
+      zkPassword="password"
+      zkPath="/activemq/leveldb-stores"
+      hostname="broker1.example.org"
+      />
+  </persistenceAdapter>
+  ...
+</broker>
